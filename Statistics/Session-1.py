@@ -1,12 +1,3 @@
-'''Tasks1.
-List 5 daily actions you perform on apps like Instagram, Zomato, or Flipkart, and for each, identify whether the data generated is numerical or categorical.
-2.
-Given this sample data from a music app: ['Pop', 'Rock', 'Jazz', 'Hip-Hop', 'Pop', 'Rock', 'Jazz', 'Pop'], classify the type of data and explain your reasoning in 2-3 lines.
-3.
-Pick any one feature from an app you use (such as the number of likes on an Instagram post, or the rating of a restaurant on Zomato) and describe how statistics could help improve that feature for users.
-4.
-Suppose you are building a new playlist recommendation feature for a Spotify-like app. List 3 basic statistical terms (such as mean, median, mode, variance, etc.) that would be useful in analyzing user listening data, and explain each with a one-line example.'''
-
 # Task 1
 # List 5 daily actions performed on apps and identify
 # whether the data generated is Numerical or Categorical.

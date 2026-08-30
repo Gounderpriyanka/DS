@@ -4,7 +4,7 @@
 #  based on the shape.
 
 
-import pandas as pd
+'''import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -17,4 +17,23 @@ plt.xlabel("Days")
 plt.ylabel("Number of Orders")
 plt.title("Swiggy Daily Orders")
 
-plt.show()
+plt.show()'''
+
+#2.Take the following list of Instagram influencer follower counts (in thousands):
+#  [5, 7, 8, 8, 9, 10, 12, 15, 95]. Calculate the mean and median, then state which is
+#  higher and what that tells you about the skewness of the data.If the mean is pulled away from
+#  the median, the data is skewed in that direction.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+data = [5, 7, 8, 8, 9, 10, 12, 15, 95]
+
+df = pd.DataFrame({
+    "instagram_user" : range(1,10),
+    "data" : [5, 7, 8, 8, 9, 10, 12, 15, 95]
+})
+
+print(df)
