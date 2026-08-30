@@ -41,6 +41,6 @@ print("Mean Salary : ",np.mean(l1))
 print("Variance : ",np.var(l1))
 print("Standard Deviation : ",np.std(l1))
 
-print("The team has a high spread in salaries because one employee earns ₹60,000,
-while most employees earn around ₹26,500–₹29,000. This high standard deviation
-shows that salaries are not evenly distributed across the team.")
+print("The team has a high spread in salaries because one employee earns ₹60,000",
+"while most employees earn around ₹26,500–₹29,000. This high standard deviation",
+"shows that salaries are not evenly distributed across the team.")
