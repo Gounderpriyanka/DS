@@ -21,8 +21,11 @@ for app, action, data, data_type in actions:
 # Classify the music app data.
 
 
-print("\nReason:")
-print("This is categorical data because the values represent")
+music_data = ["Pop", "Rock", "Jazz", "Pop", "Classical"] 
+print("Music App Data:", music_data) 
+print("Data Type: Categorical") 
+print("\nReason:") 
+print("This is categorical data because the values represent") 
 print("different music genres rather than measurable quantities.")
 print()
 

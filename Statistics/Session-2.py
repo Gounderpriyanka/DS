@@ -20,20 +20,22 @@ print(Result.median())'''
 #3.Write a function most_common_rating(ratings) that takes a list of Flipkart product ratings 
 # (e.g., [5, 4, 4, 3, 5, 4, 2, 4]) and returns the mode (most frequent rating)
 
-'''import pandas as pd
-def  most_common_rating(ratings):
-     Result = pd.Series(ratings).mode()
-     return Result
+import pandas as pd
+
+def most_common_rating(ratings):
+    result = pd.Series(ratings).mode()
+    return result.iloc[0]
 
 l1 = [5, 4, 4, 3, 5, 4, 2, 4]
-print(most_common_rating(l1))'''
+
+print("Most Common Rating:", most_common_rating(l1))
 
 #4.Given three lists representing YouTube video views for three different channels, 
 # compare the mean, median, and mode for each channel, and decide which channel's data is 
 # most affected by outliers.Hint: Try using one list with a very 
 # high value (e.g., [100, 120, 110, 105, 5000]) to see the effect on mean vs median.
 
-import pandas as pd
+'''import pandas as pd
 
 
 Channel_A = [100, 120, 110, 105, 115]
@@ -50,3 +52,4 @@ for i, channel in enumerate(channels, 1):
     print("Median:", data.median())
     print("Mode:", data.mode().tolist())
     print()
+'''
