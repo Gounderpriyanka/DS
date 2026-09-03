@@ -15,9 +15,11 @@ Alternative Hypothesis (H₁): People spend more time on Instagram than on YouTu
 
 
 
+
 # 3.Pick any feature from your favorite app (like the new dark mode in WhatsApp or a redesigned payment button in
 #  Paytm) and describe how you would set up an A/B test for it. Clearly state what your control and variant
 # groups would be, what metric you would measure, and what your null and alternative hypotheses are.
+
 
 
 # 4.Suppose you run an A/B test for a new 'Add to Wishlist' button design on Flipkart. Out of 1000 users, 
