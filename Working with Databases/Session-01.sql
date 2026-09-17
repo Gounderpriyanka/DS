@@ -1,23 +1,29 @@
+
+-- Task 1
 create database music_streaming_app;
 
+-- Task 2
 use music_streaming_app;
-
 create table playlists(
 	playlist_id int primary key	,
     name varchar(30),
     created_by varchar(30)
-
 );
 
+-- Task 3
 insert into playlists values
 (1,"Bollywood Hits","Amit"),
 (2,"Chill Vibes","Priya"),
 (3,"Workout Mix","Rahul");
+select * from playlists;
 
-select * from playlists
+-- Task 4
+select name
+from playlists
+where created_by = "Amit"
 
+-- Task 5
 /*
-
 For a food delivery app like Zomato:
 - A table is like a category of related information. For example,
  an orders table stores all food orders placed by customers.
