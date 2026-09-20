@@ -17,8 +17,23 @@ create table users(
 	user_id int primary key,
     username varchar(100),
     email varchar(50),
-    phone_number int,
+    phone_number int
     created_at datetime 
 )
+
+-- Task 5
+-- Intentionally created an error first
+-- Error: missing comma after username column
+
+-- Corrected statement
+CREATE TABLE users (
+    user_id INT PRIMARY KEY,
+    username VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    phone_number VARCHAR(15) UNIQUE,
+    created_at DATETIME
+);
+
+
 
 
