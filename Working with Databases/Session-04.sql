@@ -20,6 +20,9 @@ insert into MusicPlaylist values
 Select * from MusicPlaylist;
 
 -- Task 2
+select song_name,artist 
+from musicplaylist
+limit 3 ;
 
 -- Task 3
 use foodie_app;
@@ -44,8 +47,14 @@ insert into FoodOrders values
 
 select * from Foodorders;
 
+select distinct restaurant from foodorders;
+
 -- Task 4
 Select food_item as Dish,order_date as Date_Ordered
-from foodorders
+from foodorders;
 
 -- Task 5
+
+select distinct food_item, restaurant from foodorders
+limit 2 ;
+
