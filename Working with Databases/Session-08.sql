@@ -21,7 +21,7 @@ insert into upi values
 (10,102,"Card",550);
 
 -- Task 2
-select payment_method,count(*) as Payment_method
+select payment_method,count(*) as orders_count
 from upi
 group by payment_method;
 
@@ -29,3 +29,25 @@ group by payment_method;
 select user_id,sum(amount) as Total_amount
 from upi
 group by user_id;
+
+-- Task 4
+select payment_method , avg(amount)
+from upi
+group by payment_method
+having avg(amount)>300;
+
+-- Task 5
+-- where example
+select payment_method , count(*) as no_of_orders
+from upi
+where amount > 300
+group by payment_method;
+
+-- Having example 
+select payment_method , avg(amount)
+from upi
+group by payment_method
+having avg(amount)>300;
+
+
+
