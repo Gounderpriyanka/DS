@@ -97,7 +97,11 @@ INSERT INTO Spotify2 VALUES
 (5, 3, 'Heat Waves', 'Glass Animals'),
 (6, 4, 'Blinding Lights', 'The Weeknd');
 
-select s.playlist_name
+-- select s.playlist_name,st.song_name,st.artist
+select *
+from spotify
+left join spotify2
+on spotify.playlist_id = spotify2.playlist_id;
 
 
 
