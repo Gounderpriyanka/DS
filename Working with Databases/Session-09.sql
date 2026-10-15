@@ -58,9 +58,9 @@ on r.id = d.restaurant_id;
 -- including any dishes that might not be linked to a restaurant (simulate a data error 
 -- where a dish has a restaurant_id that doesn't match any restaurant).
 
-select r.name,d.dish_name
-from dishes d 
-right join restaurants r
+select r.name as Restaurant_name,d.dish_name
+from restaurants r 
+right join dishes d
 on r.id = d.restaurant_id;
 
 -- 5.Given this scenario: You want to show a list of all playlists and the songs inside them, 
