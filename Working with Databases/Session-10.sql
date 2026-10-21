@@ -155,8 +155,54 @@ insert into reveiws values
 
 
 
+select distinct r.restaurant_name
+from restaurant r
+join reveiws re
+on r.id = re.restaurant_id;
 
+-- Task 5
+-- Write two different JOIN queries on a Products and Categories table (like Flipkart) to list all products
+-- with their category names, but use different join conditions in each. Briefly explain which join condition
+-- is more efficient and why.
 
+create table Products(
+	id int primary key,
+    product_name varchar(50),
+    category_id int,
+    price int,
+	foreign key(category_id)
+    references categories(id)
+);
+
+insert into  products values
+(1,"iPhone",1,70000),
+(2,"Samsung Galaxy",1,55000),
+(3,"Nike Shoes",2,5000),
+(4,"Levi's Jeans",3,2500),
+(5,"Headphones",4,3000),
+(6,"Smart Watch",1,12000);
+
+create table Categories(
+	id int primary key,
+    category_name varchar(50)
+);
+
+insert into Categories values
+(1,"Electronics"),
+(2,"Footwear"),
+(3,"Clothing"),
+(4,"Accessories"),
+(5,"Home Appliances");
+
+select p.product_name,c.category_name
+from products p
+left join categories c
+on c.id = p.category_id;
+
+select p.product_name,c.category_name
+from categories c
+right join products p
+on c.id = p.category_id;
 
 
 
