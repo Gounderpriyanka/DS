@@ -169,14 +169,19 @@ create table Products(
 	id int primary key,
     product_name varchar(50),
     category_id int,
+<<<<<<< HEAD
     price int,
 	foreign key(category_id)
     references categories(id)
+=======
+    price int
+>>>>>>> e6a8ea3cbda080f44e256ddef777a16f69bdae11
 );
 
 insert into  products values
 (1,"iPhone",1,70000),
 (2,"Samsung Galaxy",1,55000),
+<<<<<<< HEAD
 (3,"Nike Shoes",2,5000),
 (4,"Levi's Jeans",3,2500),
 (5,"Headphones",4,3000),
@@ -203,6 +208,9 @@ select p.product_name,c.category_name
 from categories c
 right join products p
 on c.id = p.category_id;
+=======
+(3,"Nike Shoes");
+>>>>>>> e6a8ea3cbda080f44e256ddef777a16f69bdae11
 
 
 
