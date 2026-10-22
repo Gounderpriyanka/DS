@@ -32,9 +32,9 @@ insert into collaborations values
 (104,3,4,"2026-10-08");
 
 select *       
-from Influencers 
-left JOIN collaborations 
-on Influencers.id = collaborations.influencer1_id;
+from Influencers i
+left JOIN collaborations c 
+on i.id = c.influencer1_id;
 
 -- Task 2
 -- Using a SELF JOIN, write a query on a table called Playlists (id, user_id, playlist_name, parent_playlist_id) 
