@@ -93,10 +93,10 @@ print(is_playlist_empty(stack))'''
 def is_valid_parentheses(s):
     stack = []
 
-    for char in s:
-        if char == "(":
-            stack.append(char)
-        elif char == ")":
+    for i in s:
+        if i == "(":
+            stack.append(i)
+        elif i == ")":
             if not stack:
                 return False
             stack.pop()
