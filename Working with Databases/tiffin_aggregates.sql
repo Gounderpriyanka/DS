@@ -101,4 +101,65 @@ SET
     END;
 set sql_safe_updates = 1;
 
+select count(*) as total_orders,
+sum(amount) as Total_revenue,
+avg(rating) as Avg_ratings,
+max(delivery_minutes) as Slower_delivery
+from ratings
+where order_date between '2026-02-01' and '2026-02-28'
+and meal_type =  "jain";
+
+
+-- 3.Update `tiffin_orders` so rating becomes NULL for every order with delivery_minutes above 60,
+-- since late customers skip rating. Then create 'tiffin_aggregates.sql' with one query 
+-- returning COUNT(*) as total_orders and COUNT(rating) as rated_orders, and save both numbers as comments. 
+-- Constraint: Run a SELECT with the same WHERE before the UPDATE, and the UPDATE must have a WHERE clause.
+
+SELECT *
+FROM ratings
+WHERE delivery_minutes > 60;
+
+select count(*) as total_orders, -- 10
+count(rating) as rated_orders  -- 7
+from ratings;
+
+set sql_safe_updates = 0;
+update ratings
+set rating = null
+where delivery_minutes>60;
+set sql_safe_updates = 1;
+
+select count(*) as total_orders, -- 10
+count(rating) as rated_orders  -- 5
+from ratings;
+
+-- 4.Add one KPI query to 'tiffin_aggregates.sql' that returns SUM(quantity * price_inr) as revenue_inr, 
+-- AVG(price_inr) as avg_price_inr rounded to 2 decimals, MIN(delivery_minutes) as fastest_min and
+--  MAX(delivery_minutes) as slowest_min across all orders. Run it and save the single result row as a comment. 
+-- Hint: `ROUND(value, 2)` rounds a number to 2 decimals.
+
+create table tiffin_orders(
+	order_id int primary key,
+    quantity int ,
+    price_inr int,
+    delivery_minutes int
+);
+
+insert into tiffin_orders values
+(1,2,120,25),
+(2,1,180,35),
+(3,3,150,40),
+(4,2,200,55),
+(5,1,100,30),
+(6,2,130,65),
+(7,1,160,45),
+(8,2,220,50),
+(9,1,140,20),
+(10,3,110,70);
+
+select SUM(quantity * price_inr) as revenue_inr,
+round(AVG(price_inr),2) as avg_price_inr,
+MIN(delivery_minutes) as fastest_min,
+MAX(delivery_minutes) as slowest_min
+from tiffin_orders;
 
