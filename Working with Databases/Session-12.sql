@@ -1,108 +1,58 @@
--- Task 1.Create a CTE using the WITH clause to select all products with a rating above 4.5 from a
--- 'Products' table, similar to how Flipkart or Myntra might highlight top-rated items.
 
-use foodie_app;
 
-select * from restaurants;
-with Product_rating as(
-	select * 
-    from restaurants
-    where rating>4.5
-)
-select * from product_rating;
-
--- Task 2.Rewrite a query that finds all restaurants in 'Ahmedabad' with delivery charges 
--- under 50 from a 'Restaurants' table, first using a subquery and then using a CTE. 
--- Compare both queries for readability.Focus on making the CTE version cleaner and easier to understand.
-
-create database CTE;
-use cte;
-CREATE TABLE Restaurants (
-    restaurant_id INT PRIMARY KEY,
-    restaurant_name VARCHAR(100),
-    city VARCHAR(100),
-    delivery_charge DECIMAL(6, 2)
+-- 1.Create 'society_cte.sql' with a CTE named `flat_totals` (flat_id, total_units and total_bill per flat) 
+-- and a final SELECT that returns flats whose total_bill is above the average total_bill across flat_totals.
+-- Confirm the flat count matches your nested query from Session 11. Hint: `WITH flat_totals AS (...) 
+-- SELECT ... WHERE total_bill > (SELECT AVG(total_bill) FROM flat_totals)`.
+ 
+ use cte;
+CREATE TABLE meter_readings (
+    flat_id VARCHAR(10) primary key,
+    units INT,
+    bill DECIMAL(10,2)
 );
 
-INSERT INTO Restaurants (restaurant_id, restaurant_name, city, delivery_charge) VALUES
-(1, 'Spice Route', 'Ahmedabad', 35.00),
-(2, 'Green Leaf Cafe', 'Ahmedabad', 45.00),
-(3, 'Pizza Corner', 'Ahmedabad', 55.00),
-(4, 'Royal Thali', 'Ahmedabad', 0.00),
-(5, 'South Kitchen', 'Surat', 30.00),
-(6, 'Urban Bites', 'Ahmedabad', 49.50);
+INSERT INTO meter_readings
+(flat_id,units, bill)
+VALUES
+('A101',  10, 1200),
+('A102',  15, 1800),
+('A103',  20, 2500),
+('B101',  12, 1500),
+('B102',  18, 2100),
+('B103',  27, 3200),
+('C101',  8, 1000),
+('C102',  16, 1900),
+('C103',  30, 3500),
+('D101',  14, 1700),
+('D102',  22, 2600),
+('D103',  32, 3800);
 
+with flat_total as (
 
--- subquery method
-select r.restaurant_name,r.city,r.delivery_charge
-from restaurants r
-where r.city = "Ahmedabad" and r.delivery_charge in(
-	select r2.delivery_charge
-    from restaurants r2
-    where r2.delivery_charge<50);
-    
--- cte method
-with Display_Ahmedabad_restaurant_under_50_deliverycharge as(
-select r.restaurant_name,r.city,r.delivery_charge
-from restaurants r
-where r.city = "Ahmedabad" and r.delivery_charge<50
-)
+select flat_id,
+count(units)  as total_units,
+sum(bill) as total_bill
+from meter_readings
+group by flat_id)
 
-select * from Display_Ahmedabad_restaurant_under_50_deliverycharge;
-
-
--- 3.Using two CTEs in a single query, find the top 3 most-followed users and the top 3 most-liked
--- posts from a 'Users' and 'Posts' table (think Instagram-style data). Output both lists in the same result set.
-
-
-
-CREATE TABLE Users (
-    user_id INT PRIMARY KEY,
-    username VARCHAR(50),
-    followers_count INT
-);
-
-INSERT INTO Users (user_id, username, followers_count) VALUES
-(1, 'maya_foodie', 2450),
-(2, 'arjun_travels', 1875),
-(3, 'nisha_creates', 3200),
-(4, 'dev_codes', 980),
-(5, 'riya_style', 1540),
-(6, 'kabir_music', 760),
-(7, 'sana_art', 1100),
-(8, 'veer_fitness', 430);
-
-
-CREATE TABLE Posts (
-    post_id INT PRIMARY KEY,
-    user_id INT,
-    caption VARCHAR(255),
-    likes_count INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
-);
-
-INSERT INTO Posts (post_id, user_id, caption, likes_count) VALUES
-(101, 1, 'Weekend food trail', 1250),
-(102, 3, 'New artwork', 2100),
-(103, 2, 'Sunset by the sea', 980),
-(104, 5, 'Outfit of the day', 1750),
-(105, 1, 'Homemade pasta', 1430),
-(106, 7, 'Watercolor practice', 870),
-(107, 3, 'Behind the scenes', 1600),
-(108, 4, 'A useful coding tip', 740);
-
-with top_3_most_followed as (
-	select * from users
-    order by followers_count desc
-    limit 3
-),top_3_most_liked as (
 select * 
-from posts
-order by likes_count desc
-limit 3
-),
-top
+from flat_total
+where total_bill>
+(select avg(total_bill)
+from flat_total
+);
 
+
+
+-- task 2 Add a query with two CTEs, `tower_totals` (units per tower) and `grand_total` (units overall), 
+-- that returns tower, tower_units and share_pct rounded to 1 decimal. Expect 4 rows whose share_pct values 
+-- add up to about 100. Hint: Separate the CTEs with a comma, and use `CROSS JOIN grand_total` to place
+-- the one-row total beside each tower.
+
+
+ 
 
     
-                                                                                                                      
+                                                                                                                      '''
+
