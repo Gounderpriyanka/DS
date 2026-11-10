@@ -146,7 +146,7 @@ create table tiffin_orders(
 );
 
 insert into tiffin_orders values
-(1,2,120,25),
+(1,2,120,25), 
 (2,1,180,35),
 (3,3,150,40),
 (4,2,200,55),
