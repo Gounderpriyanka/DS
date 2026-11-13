@@ -22,4 +22,21 @@ mydb.commit()
 mycursor.execute("Create table if not exists Registrations(reg_id int primary key,student_id int,foreign key(student_id) references students(student_id),event_id int ,foreign key(event_id) references Events(event_id),Reg_date date)")
 mydb.commit()
 
+students = {}
+branches = ["BCA", "BBA", "BTech", "BSc"]
+year = [1,2,3,4]
+
+for i in range(1,61):
+    students[i] = {
+        "student_name" : f"student_{i}",
+        "branches" : random.choice(branches),
+        "year" : random.choice(year)
+    }
+   
+
+
+
+
+print(students[1])
+
 

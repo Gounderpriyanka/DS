@@ -120,6 +120,8 @@ FROM tower_totals
 CROSS JOIN grand_total;
 
 
+
+
     
                                                                                                                       '''
 
