@@ -26,26 +26,24 @@ students = {}
 branches = ["BCA", "BBA", "BTech", "BSc"]
 year = [1,2,3,4]
 
-reffered_id = []
+referred_students = random.sample(range(2,61),25)
 for i in range(1,61):
-    if random(25):
-        reffered_id.append(random.randint(1,i-1))
-    else :
-        reffered_id.append(None)
+    if i in referred_students:
+        reffered_by = random.randint(1,i-1)
+    else:
+        reffered_by = None
+
+
 
 for i in range(1,61):
     students[i] = {
         "student_name" : f"student_{i}",
         "branches" : random.choice(branches),
         "year" : random.choice(year),
-        "referred_id" : reffered_id[i-1]
+        "reffered_by" : reffered_by 
+        
     }
    
-
-
-
-
 print(students[1])
 
-
-
+mycursor.execute(f"Insert into students values({students.items()})")
