@@ -64,36 +64,47 @@ mydb.commit()
 
 
 
-Events = {}
+# Events = {}
 
-event_name = [
-    "Coding Challenge", "Web Design", "Quiz Competition",
-    "Robotics", "Photography", "Debate Competition",
-    "Dance Competition", "Music Competition"
-]
+# event_name = [
+#     "Coding Challenge", "Web Design", "Quiz Competition",
+#     "Robotics", "Photography", "Debate Competition",
+#     "Dance Competition", "Music Competition"
+# ]
 
-fee_inr = [250, 200, 150, 100, 50, 100, 250, 200]
+# fee_inr = [250, 200, 150, 100, 50, 100, 250, 200]
 
-hall = [
-    "Seminar Hall", "Computer Lab", "Main Hall",
-    "Innovation Lab", "Arts Hall", "Conference Hall",
-    "Auditorium", "Open Stage"
-]
+# hall = [
+#     "Seminar Hall", "Computer Lab", "Main Hall",
+#     "Innovation Lab", "Arts Hall", "Conference Hall",
+#     "Auditorium", "Open Stage"
+# ]
 
-for i in range(1, 9):
-    Events[i] = {
-        "Event_name": event_name[i-1],
-        "Fee_inr": fee_inr[i-1],
-        "Hall": hall[i-1]
-    }
+# for i in range(1, 9):
+#     Events[i] = {
+#         "Event_name": event_name[i-1],
+#         "Fee_inr": fee_inr[i-1],
+#         "Hall": hall[i-1]
+#     }
 
-for i , data in Events.items():
-    mycursor.execute(
-        "Insert into events values(%s,%s,%s,%s)",
-        (
-            i,data["Event_name"],data["Fee_inr"],data["Hall"]
-        )
-    )
+# for i , data in Events.items():
+#     mycursor.execute(
+#         "Insert into events values(%s,%s,%s,%s)",
+#         (
+#             i,data["Event_name"],data["Fee_inr"],data["Hall"]
+#         )
+#     )
 
-mydb.commit()
+# mydb.commit()
 
+all_pairs = []
+for i in range(1,51):
+    for j in range(1,7):
+        all_pairs.append((i,j))
+
+print(all_pairs) 
+
+selected_pairs = random.sample(all_pairs,200)
+
+for reg_id , pair in selected_pairs:
+    
