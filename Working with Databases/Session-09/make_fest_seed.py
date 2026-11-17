@@ -1,5 +1,6 @@
 import pymysql
 import random
+from datetime import date,timedelta
 
 random.seed(42)
 
@@ -97,6 +98,7 @@ mydb.commit()
 
 # mydb.commit()
 
+Registrations = {}
 all_pairs = []
 for i in range(1,51):
     for j in range(1,7):
@@ -105,6 +107,44 @@ for i in range(1,51):
 print(all_pairs) 
 
 selected_pairs = random.sample(all_pairs,200)
+student_id = []
+event_id = []
+for  i , j in selected_pairs:
+    student_id.append(i)
+    event_id.append(j)
 
-for reg_id , pair in selected_pairs:
-    
+
+
+start_date = date(2026,10,1)
+end_date = date(2026,10,31)
+
+dayss = (end_date-start_date).days
+
+
+
+for  i in range(1,len(student_id)+1):
+    # get student_id and event_id from pair
+    # create reg_date
+    # INSERT into registrations
+    reg_date = start_date + timedelta(days=random.randint(0,dayss))
+    Registrations[i]  = {
+        "student_id" : student_id[i-1],
+        "event_id": event_id[i-1],
+        "reg_date" : reg_date
+    }
+
+print(Registrations)
+
+for i ,j in Registrations.items():
+    mycursor.execute(
+        "Insert into registrations values(%s,%s,%s,%s)",
+        (
+          i,j["student_id"],j["event_id"],j["reg_date"]  
+        )
+    )
+
+mydb.commit()
+
+
+
+
