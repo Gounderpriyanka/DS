@@ -107,11 +107,6 @@ for i in range(1,51):
 print(all_pairs) 
 
 selected_pairs = random.sample(all_pairs,200)
-student_id = []
-event_id = []
-for  i , j in selected_pairs:
-    student_id.append(i)
-    event_id.append(j)
 
 
 
@@ -122,14 +117,14 @@ dayss = (end_date-start_date).days
 
 
 
-for  i in range(1,len(student_id)+1):
+for reg_id, (student_id, event_id) in enumerate(selected_pairs, start=1):
     # get student_id and event_id from pair
     # create reg_date
     # INSERT into registrations
     reg_date = start_date + timedelta(days=random.randint(0,dayss))
     Registrations[i]  = {
-        "student_id" : student_id[i-1],
-        "event_id": event_id[i-1],
+        "student_id" : student_id,
+        "event_id": event_id,
         "reg_date" : reg_date
     }
 
