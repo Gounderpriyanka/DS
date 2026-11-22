@@ -75,7 +75,4 @@ plan_validity = {
 
 price = int(input("Enter the Plan Price:"))
 
-if price in plan_validity:
-    print("Validity:",plan_validity[price])
-else:
-    
+
