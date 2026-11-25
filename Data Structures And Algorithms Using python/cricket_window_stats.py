@@ -4,40 +4,21 @@
 #  with the most runs. Slide the window by adding the new over and subtracting the one that leaves.
 #  Test k = 3, 5 and 20. Constraint: Do not recompute with `sum(runs[i:i+k])`.
 
-l1 = [8, 12, 5, 15, 9, 11, 7, 14, 6, 10, 18, 4, 13, 8, 16, 5, 12, 9, 7, 14]
 
-k = 3
-k = 5
-k = 20
 
 # def best_fixed_window(runs, k):
-window_sum = sum(l1[:3]) #25
-best_sum = window_sum 
-best_index = 0
-
-
-print(window_sum)
-
-
 runs = [8, 12, 5, 15, 9, 11, 7, 14, 6, 10,
         18, 4, 13, 8, 16, 5, 12, 9, 7, 14]
 
+def best_fixed_window(runs,k):
+    windows = sum(runs[:k])
+    max_sum = windows
 
-def best_fixed_window(runs, k):
-
-    window_sum = sum(runs[:k])
-    best_sum = window_sum
-    best_index = 0
-
-    for i in range(k, len(runs)):
-
-        window_sum = window_sum - runs[i - k] + runs[i]
-
-        if window_sum > best_sum:
-            best_sum = window_sum
-            best_index = i - k + 1
-
-    return best_index + 1, best_sum
+    for i in range(k,len(runs)):
+        windows = windows + runs[i] - runs[i-k]
+        max_sum = max(windows,max_sum)
+        
+    return max_sum
 
 
 print("k = 3:", best_fixed_window(runs, 3))
