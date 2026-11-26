@@ -21,3 +21,5 @@ else:
 #  and print how many plans were checked. Test with prices 19, 239, 100 and 2000, and
 #  compare the checked counts with the first function.
 
+l1 = [19, 49, 99, 149, 199, 239, 299, 399, 499, 599, 799, 999]
+
