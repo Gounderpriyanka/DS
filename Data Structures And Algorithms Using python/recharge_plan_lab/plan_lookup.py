@@ -4,7 +4,7 @@
 #  how many plans were checked, or 'No plan at this price'. Test with 239 and 500. 
 # Hint: `input()` returns text; convert it with `int()` before comparing.
 
-l1 = [19, 49, 99, 149, 199, 239, 299, 399, 499, 599, 799, 999]
+'''l1 = [19, 49, 99, 149, 199, 239, 299, 399, 499, 599, 799, 999]
 
 price = int(input("Enter your plan:"))
 
@@ -15,11 +15,28 @@ for i in range(0,len(l1)):
         break
 else:
     print("No plan at this price")
-
+'''
 # task 2.Extend 'plan_lookup.py' with a second function that uses the fact that the prices 
 # are in ascending order: stop the loop as soon as a plan price is bigger than the price entered,
 #  and print how many plans were checked. Test with prices 19, 239, 100 and 2000, and
 #  compare the checked counts with the first function.
 
 l1 = [19, 49, 99, 149, 199, 239, 299, 399, 499, 599, 799, 999]
+
+def price(l1):
+    price = int(input("Enter a value:"))
+    for i in range(len(l1)):
+        if  l1[i]>price:
+            print("The Plan was checked",i)
+            break
+        elif price == l1[i]:
+            print("The Plan was checked",i)
+            print("Found")
+            break
+    else:
+        print("The Plan was checked",i+1)
+        print("Not found")
+        
+price(l1)
+
 
