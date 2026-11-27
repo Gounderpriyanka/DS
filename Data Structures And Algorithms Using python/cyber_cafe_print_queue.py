@@ -71,7 +71,7 @@ waiting_times(q)'''
 # then `append()` the remaining part.
 
 
-from collections import deque
+'''from collections import deque
 
 q = deque()
 
@@ -85,9 +85,107 @@ def serve_next():
 def show_queue():
     print("Waiting jobs:",q)
 
+def round_robin(q):
+    print("Service Orders:")
+    while q:
+        i , j = q.popleft()
+
+        if j <= 10:
+            print(f"{i} -> {j} pages")
+            
+        elif j > 10:
+            print(f"{i} -> 10 pages")
+            q.append((i,j-10))
+        
 add_job("Asha",4)
 add_job("Bhavin",25)
 add_job("Chirag",12)
 add_job("Dhara",8)
 show_queue()
+round_robin(q)'''
+
+
+# 4.Finish 'cyber_cafe_print_queue.py' with a menu (add job, serve next, show queue, show waiting times,
+#  run round robin, exit) that allows at most 5 waiting jobs and prints 'Queue full' for a sixth.
+#  Test by adding 6 jobs, serving 2 and adding 1 more. Paste the output as a comment at the end
+#  and push the folder to 'dsa_python_portfolio'.
+
+from collections import deque
+
+
+
+q = deque()
+
+
+def add_job():
+    customer = input("Enter customer name:")
+    page = int(input("Enter a page number:"))
+    q.append((customer,page))
+    print("Job added:",customer,page)
+
+
+def serve_next():
+    if q:
+        print("Served:",q.popleft())
+    else:
+        print("No jobs waiting")
+
+def show_queue():
+    print("Waiting jobs:",q)
+
+def waiting_times(queue):
+    total = 0
+    for i,j in queue:
+        print(f"{i} must wait {total} seconds ")
+        total += j*2
+
+def round_robin(q):
+    print("Service Orders:")
+    while q:
+        i , j = q.popleft()
+
+        if j <= 10:
+            print(f"{i} -> {j} pages")
+        
+        elif j > 10:
+            print(f"{i} -> 10 pages")
+            q.append((i,j-10))
+
+stop = False
+
+while stop == False:
+    print("----------The Menu----------")
+    print("1. Add Job")
+    print("2. Serve next")
+    print("3. Show queue")
+    print("4. Show waiting times")
+    print("5. Run round robin")
+    print("6. exit")
+    method = int(input("Choose method (1/2/3/4/5/6): "))
+
+    if method == 1:
+        if len(q) >= 5:
+            print("Queue full")
+        else:
+            add_job()
+
+    elif method == 2:
+        serve_next()
+    elif method == 3:
+        show_queue()
+    elif method == 4:
+        waiting_times(q)
+    elif method == 5:
+        round_robin(q)
+    elif method == 6:
+        print("----Exited---")
+        stop = True
+        
+    else:
+        print("---Incorrect Method-----")
+
+
+    
+
+        
 
