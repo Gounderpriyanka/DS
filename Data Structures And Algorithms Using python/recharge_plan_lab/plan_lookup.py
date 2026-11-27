@@ -10,7 +10,7 @@ price = int(input("Enter your plan:"))
 
 for i in range(0,len(l1)):
     if price == l1[i]:
-        print(f"The plan position: {i}")
+        print(f"The plan position: {i+1}")
         print(f"The plan was checked {i} times")
         break
 else:
@@ -46,7 +46,7 @@ price(l1)
 #  Constraint: Do not use any loop inside this function.
 
 
-'''plan_validity = {
+plan_validity = {
     19: 28,
     49: 28,
     99: 28,
@@ -66,7 +66,7 @@ def validity(plan_validity):
     price = int(input("Enter the price: "))
     result = plan_validity.get(price,"Not found!")
     print(result)
-validity(plan_validity)'''
+validity(plan_validity)
 
 # task 4.Finish 'plan_lookup.py' with a menu where the user picks method 1 (full scan),
 #  2 (early stop) or 3 (dictionary), enters a price, and sees the number of steps that method used. 
